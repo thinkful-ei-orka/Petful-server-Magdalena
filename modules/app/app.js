@@ -1,14 +1,14 @@
-const { CLIENT_ORIGIN } = require('../../config')
+const { CLIENT_ORIGIN } = require('../../config');
 
-const express = require('express')
-const cors = require('cors')
-const app = express()
+const express = require('express');
+const cors = require('cors');
+const app = express();
 
 app.use(cors({
-  CLIENT_ORIGIN
-}))
+  origin: '*'
+}));
 
-app.use('/people', require('../people/people.router'))
-app.use('/pets', require('../pets/pets.router'))
+app.use('/people', require('../people/people.router'));
+app.use('/pets', require('../pets/pets.router'));
 
 module.exports = app;
