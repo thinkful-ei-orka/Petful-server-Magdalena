@@ -1,44 +1,41 @@
-const Queue = require('../queue/Queue')
-const store = require('../../store')
+const Queue = require('../queue/Queue');
+const store = require('../../store');
 
 // Set up initial data.
 // --------------------
 
-const pets = {
+const Pets = {
   cats: new Queue(),
   dogs: new Queue()
 }
 
-store.cats.forEach(cat => pets.cats.enqueue(cat))
-store.dogs.forEach(dog => pets.dogs.enqueue(dog))
+store.cats.forEach(cat => Pets.cats.enqueue(cat));
+store.dogs.forEach(dog => Pets.dogs.enqueue(dog));
 
 // --------------------
 
 module.exports = {
   // get() {
-  //   // Return the pets next in line to be adopted.
-  //   return pets;
+  //   // Return the Pets next in line to be adopted.
+  //   return Pets;
   // },
 
   get(type) { //return the Pets next in line to be adopted 
-    if (type === 'cats') return pets.cats.show(); 
-    if (type === 'dogs') return pets.dogs.show(); 
+    if (type === 'cats') return Pets.cats.show(); 
+    if (type === 'dogs') return Pets.dogs.show(); 
   },
 
   getAll() {
     return { 
-      cats: [...pets.cats.all()], 
-      dogs: [...pets.dogs.all()] 
+      cats: [...Pets.cats.all()], 
+      dogs: [...Pets.dogs.all()] 
     };
   },
 
 
   dequeue(type) {
     // Remove a pet from the queue.
-    if (type === 'cat') {
-      return pets.cats.dequeue();
-    } else if (type === 'dog') {
-      return pets.dogs.dequeue();
-    }
+    if (type === 'cats') Pets.cats.dequeue(); 
+    if (type === 'dogs') Pets.dogs.dequeue();
   }
-}
+};
