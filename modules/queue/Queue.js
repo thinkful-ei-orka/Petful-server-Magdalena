@@ -1,9 +1,4 @@
-class _Node {
-  constructor(data, next) {
-    this.data = data;
-    this.next = next;
-  }
-}
+const Node = require('../Node');
 
 class Queue {
   constructor() {
